@@ -1,12 +1,11 @@
-package com.than.pla;
+package than.com;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SummerPlatformApplication {
+public class App {
     public static void main(String[] args) {
-        SpringApplication.run(SummerPlatformApplication.class, args);
+        SpringApplication.run(App.class, args);
     }
-
 }
