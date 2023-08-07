@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class App {
     /**
+     * @author Than
      *主函数
      */
     public static void main(String[] args) {
