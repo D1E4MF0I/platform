@@ -11,6 +11,18 @@
 
     <artifactId>controller</artifactId>
 
+    <dependencies>
+
+        <dependency>
+            <groupId>com.than</groupId>
+            <artifactId>service</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
+
+
+    </dependencies>
+
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>

@@ -9,7 +9,18 @@
         <version>0.0.1</version>
     </parent>
 
-    <artifactId>server</artifactId>
+    <artifactId>service</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.than</groupId>
+            <artifactId>dao</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
+
+    </dependencies>
+
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

@@ -1,4 +1,4 @@
-package than.com;
+package com.than;
 
 import org.springframework.boot.test.context.SpringBootTest;
 
