@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(("/user"))
 public class UserController {
 
+
     /**
      * 注册账号
      * @param user 账号

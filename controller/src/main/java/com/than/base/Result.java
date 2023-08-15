@@ -1,7 +1,14 @@
 package com.than.base;
 
-public class Result {
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
+import java.beans.JavaBean;
+
+@Getter
+@Setter
+public class Result {
 
     private int code;
     private Object msg;
@@ -22,19 +29,4 @@ public class Result {
                 '}';
     }
 
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
-    }
-
-    public Object getMsg() {
-        return msg;
-    }
-
-    public void setMsg(Object msg) {
-        this.msg = msg;
-    }
 }

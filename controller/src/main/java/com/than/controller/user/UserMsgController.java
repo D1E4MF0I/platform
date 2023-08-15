@@ -24,11 +24,11 @@ public class UserMsgController {
     }
 
     /**
-     *
+     * <p>获取其他用户的信息(公开的)</p>
      * @param username 用户的名称
      * @return 返回用户信息
      */
-    @PostMapping("/others_msg")
+    @PostMapping("/others_msg_by_username")
     public Result getOthersMsgByName(@RequestParam("username")String username){
 
 
@@ -36,11 +36,11 @@ public class UserMsgController {
     }
 
     /**
-     *
+     * <p>获取其他用户信息</p>
      * @param id 用户账号
      * @return 返回用户信息
      */
-    @PostMapping("/others_msg")
+    @PostMapping("/others_msg_by_id")
     public Result getOthersMsgById(@RequestParam("user_id")String id){
 
 
