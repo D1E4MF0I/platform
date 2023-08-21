@@ -1,7 +1,9 @@
 package com.than.controller.user;
 
+import com.than.TestMapper;
 import com.than.base.Code;
 import com.than.base.Result;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(("/user"))
 public class UserController {
 
+    @Autowired
+    TestMapper mapper;
 
     /**
      * 注册账号
@@ -23,6 +27,7 @@ public class UserController {
     @PostMapping("/sign_up")
     public Result signUpUser(@RequestParam("user")String user,@RequestParam("pwd")String pwd){
 
+        System.out.println(mapper.findAll());
 
         return new Result(Code.OK,pwd);
     }
