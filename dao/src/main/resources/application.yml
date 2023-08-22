@@ -1,4 +1,4 @@
-# 爷就要用yml！！！！！！！
+# 爷就要用yml！！！！！！！！！！！！！！！
 spring:
   datasource:
     url: jdbc:mysql://42.192.50.23:3306/platformDB?serverTimezone=UTC&useSSL=false
