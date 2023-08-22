@@ -2,9 +2,6 @@ package com.than.base;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
-
-import java.beans.JavaBean;
 
 @Getter
 @Setter
