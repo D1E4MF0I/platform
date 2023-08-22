@@ -6,6 +6,6 @@ import java.util.List;
 
 @Mapper
 public interface UserDao {
-    @Select("select * from tbl_book where id = 1")
+    @Select("select number from test_tbl where id = 1")
     int testSQL();
 }

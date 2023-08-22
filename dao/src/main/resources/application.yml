@@ -1,8 +1,10 @@
-#在application.properties/或者application.yml文件中没有添加数据库配置信息.
+# 爷就要用yml！！！！！！！
 spring:
   datasource:
-    url: 42.192.50.23:3306/test_tbl?serverTimezone=UTC
+    url: jdbc:mysql://42.192.50.23:3306/platformDB?serverTimezone=UTC&useSSL=false
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: 2002108
+server:
+  port: 9108
