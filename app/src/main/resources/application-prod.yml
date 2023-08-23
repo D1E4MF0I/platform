@@ -5,5 +5,13 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: 2002108
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
 server:
   port: 9108
+
+
+env:
+  ip: 127.0.0.1
