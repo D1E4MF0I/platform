@@ -1,7 +1,7 @@
 package com.than.controller.comment;
 
 import com.than.base.Result;
-import com.than.bean.CommentBean;
+import com.than.controller.bean.CommentBean;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -2,6 +2,8 @@ package com.than.controller.user;
 
 import com.than.base.Code;
 import com.than.base.Result;
+import com.than.user.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -12,6 +14,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(("/user"))
 public class UserController {
+
+    @Autowired
+    private UserService service;
+
     /**
      * 注册账号
      * @param user 账号

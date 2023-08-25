@@ -1,4 +1,4 @@
-package com.than.main.bean;
+package com.than.dao.bean;
 
 public class GroupBean {
 }

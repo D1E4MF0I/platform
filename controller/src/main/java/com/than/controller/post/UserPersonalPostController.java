@@ -1,7 +1,7 @@
 package com.than.controller.post;
 
 import com.than.base.Result;
-import com.than.bean.PersonalPostBean;
+import com.than.controller.bean.PersonalPostBean;
 import org.springframework.web.bind.annotation.*;
 
 /**

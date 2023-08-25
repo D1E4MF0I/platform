@@ -1,7 +1,7 @@
 package com.than.controller.axis;
 
 import com.than.base.Result;
-import com.than.bean.AxisMsgBean;
+import com.than.controller.bean.AxisMsgBean;
 import org.springframework.web.bind.annotation.*;
 
 /**

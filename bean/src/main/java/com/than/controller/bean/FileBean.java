@@ -1,4 +1,4 @@
-package com.than.bean;
+package com.than.controller.bean;
 
 import lombok.Data;
 import lombok.Getter;

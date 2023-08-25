@@ -1,7 +1,7 @@
 package com.than.controller.user;
 
 import com.than.base.Result;
-import com.than.bean.UserPersonalMsgBean;
+import com.than.controller.bean.UserPersonalMsgBean;
 import org.springframework.web.bind.annotation.*;
 
 /**
