@@ -1,10 +1,6 @@
 package com.than.controller.bean;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-
-import java.beans.JavaBean;
 
 /**
  * @package: com.than.bean

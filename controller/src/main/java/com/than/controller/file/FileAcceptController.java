@@ -7,10 +7,7 @@ import com.than.file.FileManage;
 import com.than.file.exception.FolderCreationFailedException;
 import com.than.time.TimeUtil;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -25,6 +22,7 @@ import java.util.UUID;
  * @date: 2023/8/23 16:08
  */
 @RestController
+@RequestMapping("/file")
 public class FileAcceptController {
 
     @Value("${env.ip:127.0.0.1}")
@@ -33,7 +31,7 @@ public class FileAcceptController {
     @Value("${server.port}")
     private String port;
 
-    @PostMapping(value = "/file/accept")
+    @PostMapping(value = "/accept")
     @ResponseBody
     public Result fileUpload(@RequestParam(value = "file") MultipartFile file) throws IOException {
         //获取文件名

@@ -1,14 +1,19 @@
 package com.than.base;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
+@Data
 public class Result {
 
     private int code;
+
     private Object msg;
+
+    @JsonIgnore
+    private Object extraInformation;
 
     public Result() {
     }
@@ -18,12 +23,9 @@ public class Result {
         this.msg = msg;
     }
 
-    @Override
-    public String toString() {
-        return "Result{" +
-                "code=" + code +
-                ", msg=" + msg +
-                '}';
+    public Result(int code, Object msg, Object extraInformation) {
+        this.code = code;
+        this.msg = msg;
+        this.extraInformation = extraInformation;
     }
-
 }

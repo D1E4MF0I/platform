@@ -13,14 +13,20 @@ import java.io.File;
  */
 public class FileManage {
 
-    public static void mkdir(File file)throws FolderCreationFailedException{
+    /**
+     * <p>递归创建文件夹, 如果不这样创建, 父文件夹也不存在时不会一同创建</p>
+     *
+     * @param file 目标文件夹对象
+     * @throws FolderCreationFailedException 创建失败异常
+     */
+    public static void mkdir(File file) throws FolderCreationFailedException {
 
-        if(!file.getParentFile().exists()){
+        if (!file.getParentFile().exists()) {
             mkdir(file.getParentFile());
         }
 
-        if(file.getParentFile().exists()){
-            if(!file.mkdirs()){
+        if (file.getParentFile().exists()) {
+            if (!file.mkdirs()) {
                 throw new FolderCreationFailedException("Folder creation failed");
             }
         }
