@@ -1,4 +1,4 @@
-package com.than.test;
+package com.than.test.daotest;
 
 
 import com.than.dao.UserDao;
