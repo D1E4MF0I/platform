@@ -11,7 +11,6 @@ public class App {
 
     public static boolean isTest = true;
 
-
     /**
      * @author Than
      * 主函数

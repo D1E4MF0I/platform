@@ -2,9 +2,11 @@ package com.than.base;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
+/**
+ * <p>请求结果类</p>
+ * @author Than
+ */
 @Data
 public class Result {
 

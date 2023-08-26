@@ -8,7 +8,7 @@ import java.io.File;
  * @author Than
  * @package: com.than.file
  * @className: FileManage
- * @description: TODO
+ * @description: 文件管理工具
  * @date: 2023/8/23 18:00
  */
 public class FileManage {
