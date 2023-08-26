@@ -1,13 +1,5 @@
 package com.than.interceptor;
 
-/**
- * @author Than
- * @package: com.than.interceptor
- * @className: JWTInterceptor
- * @description: TODO
- * @date: 2023/8/25 17:01
- */
-
 import com.auth0.jwt.exceptions.AlgorithmMismatchException;
 import com.auth0.jwt.exceptions.SignatureVerificationException;
 import com.auth0.jwt.exceptions.TokenExpiredException;
@@ -18,16 +10,22 @@ import com.than.jwt.JWTUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.NonNull;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
-
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * JWT验证拦截器
+ * @author Than
+ * @package: com.than.interceptor
+ * @className: JWTInterceptor
+ * @description: jwt拦截器
+ * @date: 2023/8/25 17:01
  */
+
 @Component
+@Slf4j
 public class JWTInterceptor implements HandlerInterceptor {
 
     @Override
@@ -39,21 +37,21 @@ public class JWTInterceptor implements HandlerInterceptor {
             JWTUtil.verify(token);//验证令牌
             return true;//放行请求
         } catch (SignatureVerificationException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
             map.put("msg", "无效签名");
         } catch (TokenExpiredException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
             map.put("msg", "token过期");
         } catch (AlgorithmMismatchException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
             map.put("msg", "token算法不一致");
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
             map.put("msg", "token失效");
         }
         map.put("state", false);//设置状态
         //将map转化成json，response使用的是Jackson
-        String json = new ObjectMapper().writeValueAsString(new Result(Code.ERROR,map));
+        String json = new ObjectMapper().writeValueAsString(new Result(Code.FAIL, map));
         response.setContentType("application/json;charset=UTF-8");
         response.getWriter().print(json);
         return false;

@@ -20,7 +20,7 @@ import java.util.Map;
 public class UserService {
 
     public Result signUpUser(String user, String pwd) {
-        // TODO: 2023/8/25 将数据存入数据库,并获取id
+        // TODO: 2023/8/25 将数据存入数据库,并获取id, 判断账号名是否符合规范(长度小于50)
         int id = 1;
 
         String token = JWTUtil.getToken(Map.of(String.valueOf(id), user, "creat-time", String.valueOf(TimeUtil.getTime())));
@@ -28,18 +28,50 @@ public class UserService {
         return new Result(Code.OK, initUser(), token);
     }
 
-    public Result logInByPwd() {
+    public Result logInByPwd(String user, String pwd) {
+        boolean isRight = verifyPwd(user, pwd);
+        Result result;
 
-        return new Result();
+        if (isRight) {
+            UserPersonalMsgBean userMsg = getUserMsg(user);
+            result = new Result(Code.OK, getUserMsg(user), userMsg.getToken());
+        } else {
+            result = new Result(Code.FAIL, "密码错误", null);
+        }
+
+        return result;
     }
 
-    public Result logInByCookie() {
+    public Result logInByCookie(String token) {
 
-        return new Result();
+        UserPersonalMsgBean userMsg = getUserMsg(token);
+
+
+        return new Result(Code.OK, userMsg, userMsg.getToken());
     }
 
     private UserPersonalMsgBean initUser() {
         return null;
+    }
+
+    private UserPersonalMsgBean getUserMsg(String userVerifyCode) {
+        if (userVerifyCode.length() > 50) {
+            return getUserMsgByToken();
+        }
+        return getUserMsgByUser();
+    }
+
+    private UserPersonalMsgBean getUserMsgByUser() {
+        return null;
+    }
+
+    private UserPersonalMsgBean getUserMsgByToken() {
+        return null;
+    }
+
+    private boolean verifyPwd(String user, String pwd) {
+        // TODO: 2023/8/26 从数据库验证用户账号和密码，返回布尔值
+        return false;
     }
 
 

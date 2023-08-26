@@ -6,7 +6,7 @@ import lombok.Data;
  * @package: com.than.bean
  * @className: FileBean
  * @author Than
- * @description: TODO
+ * @description: 文件bean类
  * @date: 2023/8/23 16:12
  */
 @Data
