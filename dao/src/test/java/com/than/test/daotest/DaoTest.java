@@ -1,14 +1,13 @@
 package com.than.test.daotest;
 
 
+import com.than.dao.GroupDao;
 import com.than.dao.UserDao;
+import com.than.dao.bean.GroupBean;
 import com.than.dao.bean.UserBean;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.sql.Timestamp;
-
 
 @SpringBootTest
 public class DaoTest {
@@ -17,13 +16,41 @@ public class DaoTest {
 
     @Test
     void testUserDao(){
-        UserBean userBean = userDao.getByAccount("111");
-        System.out.println(userBean);
+//        UserBean userBean1 = new UserBean();
+//        userBean1.setAccount("1234");
+//        userBean1.setPassword("1234");
+//        userBean1.setName("ry");
+//        userBean1.setCreate_time(new Timestamp(System.currentTimeMillis()));
+//        System.out.println(userDao.insertUser(userBean1));
 
-        UserBean userBean1 = new UserBean();
-        userBean1.setAccount("123");
-        userBean1.setPassword("123");
-        userBean1.setCreate_time(new Timestamp(System.currentTimeMillis()));
-        System.out.println(userDao.insertUser(userBean1));
+//        System.out.println(userDao.getAllUsers());
+//
+//        userDao.deleteUserByAccount("1234");
+//
+//        System.out.println(userDao.getAllUsers());
+
+
+        // 自动生成部分测试
+        UserBean userBean = new UserBean("ry", "123456");
+        userDao.insertUser(userBean);
+
+        System.out.println(userDao.getAllUsers());
+    }
+
+    @Autowired
+    GroupDao groupDao;
+    @Test
+    void testGroupDao(){
+//        System.out.println(groupDao.getAllGroups());
+
+//        System.out.println(groupDao.getByGroupAccount("123"));
+
+//        groupDao.deleteGroupByGroupAccount("1693152770810");
+
+        // 自动生成部分测试
+        GroupBean groupBean = new GroupBean("hello test", "111", 1, 100);
+        groupDao.insertUser(groupBean);
+
+        System.out.println(groupDao.getAllGroups());
     }
 }
