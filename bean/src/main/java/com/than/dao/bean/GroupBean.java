@@ -24,7 +24,7 @@ public class GroupBean {
 
 
     public GroupBean() {
-        group_account = String.valueOf(System.currentTimeMillis());
+        group_account = String.valueOf(System.nanoTime());
 
         group_create_time = new Timestamp(System.currentTimeMillis());
     }

@@ -24,7 +24,7 @@ public class UserBean {
 
 
     public UserBean() {
-        account = String.valueOf(System.currentTimeMillis());
+        account = String.valueOf(System.nanoTime());
         create_time = new Timestamp(System.currentTimeMillis());
     }
 
