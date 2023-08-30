@@ -2,6 +2,8 @@ package com.than.controller.comment;
 
 import com.than.base.Result;
 import com.than.controller.bean.CommentBean;
+import com.than.service.comment.UserOwnCommentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/comment/own")
 public class UserOwnCommentController {
+
+    @Autowired
+    private UserOwnCommentService userOwnCommentService;
 
     /**
      * <p>发送一个评论,此接口可以用于评论帖子,也可以用于评论其他用户的评论</p>

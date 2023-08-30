@@ -1,4 +1,4 @@
-package com.than.user;
+package com.than.service.user;
 
 import com.than.base.Code;
 import com.than.base.Result;

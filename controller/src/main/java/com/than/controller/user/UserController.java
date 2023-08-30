@@ -1,7 +1,7 @@
 package com.than.controller.user;
 
 import com.than.base.Result;
-import com.than.user.UserService;
+import com.than.service.user.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -2,6 +2,8 @@ package com.than.controller.post;
 
 import com.than.base.Result;
 import com.than.controller.bean.PersonalPostBean;
+import com.than.service.post.UserPersonalPostService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -11,6 +13,9 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/post/personal")
 public class UserPersonalPostController {
+
+    @Autowired
+    private UserPersonalPostService userPersonalPostService;
 
     /**
      * <p>发布一个帖子</p>

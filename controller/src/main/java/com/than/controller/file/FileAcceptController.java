@@ -5,7 +5,9 @@ import com.than.base.Result;
 import com.than.controller.bean.FileBean;
 import com.than.file.FileManage;
 import com.than.file.exception.FolderCreationFailedException;
+import com.than.service.file.FileAcceptService;
 import com.than.time.TimeUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -24,6 +26,9 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/file")
 public class FileAcceptController {
+
+    @Autowired
+    private FileAcceptService fileAcceptService;
 
     @Value("${env.ip:127.0.0.1}")
     private String ip;

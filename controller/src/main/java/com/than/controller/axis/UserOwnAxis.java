@@ -2,6 +2,8 @@ package com.than.controller.axis;
 
 import com.than.base.Result;
 import com.than.controller.bean.AxisMsgBean;
+import com.than.service.axis.UserOwnAxisService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -14,6 +16,9 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/axis/own")
 public class UserOwnAxis {
+
+    @Autowired
+    private UserOwnAxisService userOwnAxisService;
 
     /**
      * <p>获取自己的时间轴</p>

@@ -2,16 +2,20 @@ package com.than.controller.user;
 
 
 import com.than.base.Result;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * @author Than
  * <p>获取用户信息</p>
  * <p>用户信息分为两种: 个人信息和他人信息</p>
+ * @author Than
  */
 @RestController
 @RequestMapping("/user_msg")
 public class UserMsgController {
+
+    @Autowired
+    private UserMsgController userMsgController;
 
     /**
      * <p>获取个人信息,无参数,但是需要在请求头中附带cookie</p>

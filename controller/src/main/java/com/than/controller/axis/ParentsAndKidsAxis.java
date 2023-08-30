@@ -2,16 +2,22 @@ package com.than.controller.axis;
 
 import com.than.base.Result;
 import com.than.controller.bean.AxisMsgBean;
+import com.than.service.axis.ParentsAndKidsAxisService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * @author Than
  * <p>亲人之间的时间轴,联系父母和孩子</p>
  * <p>时间轴不提供评论功能,<strong>想ta就去给他打个电话吧！</strong></p>
+ * @author Than
  */
 @RestController
 @RequestMapping("/axis/family")
 public class ParentsAndKidsAxis {
+
+    @Autowired
+    private ParentsAndKidsAxisService parentsAndKidsAxisService;
+
 
     /**
      * <p>获取家人时间轴</p>

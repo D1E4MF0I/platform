@@ -1,6 +1,8 @@
 package com.than.controller.comment;
 
 import com.than.base.Result;
+import com.than.service.comment.CommentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,6 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/comment")
 public class CommentController {
+
+    @Autowired
+    private CommentService commentService;
+
     /**
      * <p>获取一个帖子下面的所有评论</p>
      * @param id 帖子id

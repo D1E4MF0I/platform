@@ -2,15 +2,21 @@ package com.than.controller.user;
 
 import com.than.base.Result;
 import com.than.controller.bean.UserPersonalMsgBean;
+import com.than.service.user.UserManageService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * @author Than
  * <p>用户管理控制层，修改用户信息等操作在这里完成,只能对用户自身操作,此类所有操作需要在请求头中附带cookie</p>
+ * @author Than
  */
 @RestController
 @RequestMapping("/user/manage")
 public class UserManageController {
+
+    @Autowired
+    private UserManageService userManageService;
+
 
     /**
      * <P>修改用户名</P>

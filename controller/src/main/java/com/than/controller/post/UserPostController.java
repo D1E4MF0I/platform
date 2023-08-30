@@ -1,6 +1,8 @@
 package com.than.controller.post;
 
 import com.than.base.Result;
+import com.than.service.post.UserPostService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -10,6 +12,9 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/post/users")
 public class UserPostController {
+
+    @Autowired
+    private UserPostService userPostService;
 
     /**
      * <p>获取所有的帖子,用于首页帖子推荐</p>
