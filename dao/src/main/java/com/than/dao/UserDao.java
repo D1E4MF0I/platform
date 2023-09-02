@@ -40,4 +40,12 @@ public interface UserDao {
      */
     @Delete("delete from user_tbl where account = #{account}")
     int deleteUserByAccount(String account);
+
+    /**
+     * 更新 根据账户号更改账户其余信息（账户号无法更改，自动生成且唯一
+     * @param userBean 更新后的用户数据
+     * @return 操作数量，用于判断结果
+     */
+    @Update("UPDATE `platformDB`.`user_tbl` SET `password` = #{userBean.password}, `name` = #{userBean.name}, `headshot` = #{userBean.headshot}, `background` = #{userBean.background}, `signature` = #{userBean.signature}, `create_time` = #{userBean.create_time} WHERE `account` = #{userBean.account};")
+    int updateUserByAccount(@Param("userBean") UserBean userBean);
 }

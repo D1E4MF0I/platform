@@ -1,6 +1,7 @@
 package com.than.dao;
 
 import com.than.dao.bean.GroupBean;
+import com.than.dao.bean.UserBean;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -61,4 +62,12 @@ public interface GroupDao {
      */
     @Delete("delete from group_tbl where group_account = #{group_account}")
     int deleteGroupByGroupAccount(String group_account);
+
+    /**
+     * 更新 根据 群聊号 创建群聊账户号 更改群聊其他数据
+     * @param groupBean 更新后的群聊
+     * @return 操作数量，用于判断结果
+     */
+    @Update("UPDATE `platformDB`.`group_tbl` SET `group_name` = #{group.group_name}, `group_create_time` = #{group.group_create_time}, `group_sizes` = #{group.group_sizes}, `group_max_sizes` = #{group.group_max_sizes}, `group_headshot` = #{group.group_headshot}, `group_background` = #{group.group_background}, `group_signature` = #{group.group_signature} WHERE `group_account` = #{group.group_account} AND `group_creator_account` = #{group.group_creator_account};")
+    int updateByGroupAccount(@Param("group") GroupBean groupBean);
 }
