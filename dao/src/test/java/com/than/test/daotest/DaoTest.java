@@ -31,10 +31,13 @@ public class DaoTest {
 
 
         // 自动生成部分测试
-        UserBean userBean = new UserBean("ry", "123456");
-        userDao.insertUser(userBean);
+        UserBean userBean = new UserBean("test", "123456");
+//        userDao.insertUser(userBean);
+//
+//        System.out.println(userDao.getAllUsers());
 
-        System.out.println(userDao.getAllUsers());
+        userBean.setAccount("13813400980800");
+        System.out.println(userDao.updateUserByAccount(userBean));
     }
 
     @Autowired
@@ -48,9 +51,13 @@ public class DaoTest {
 //        groupDao.deleteGroupByGroupAccount("1693152770810");
 
         // 自动生成部分测试
-        GroupBean groupBean = new GroupBean("hello test", "111", 1, 100);
-        groupDao.insertUser(groupBean);
+        GroupBean groupBean = new GroupBean("hello test new fix", "111", 100, 1000);
+//        groupDao.insertUser(groupBean);
+//
+//        System.out.println(groupDao.getAllGroups());
+        groupBean.setGroup_account("13731286298500");
+        groupBean.setGroup_creator_account("111");
 
-        System.out.println(groupDao.getAllGroups());
+        System.out.println(groupDao.updateByGroupAccount(groupBean));
     }
 }
