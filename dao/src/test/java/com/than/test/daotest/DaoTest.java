@@ -31,13 +31,15 @@ public class DaoTest {
 
 
         // 自动生成部分测试
-        UserBean userBean = new UserBean("test", "123456");
-//        userDao.insertUser(userBean);
+//        UserBean userBean = new UserBean("test", "123456");
+////        userDao.insertUser(userBean);
+////
+////        System.out.println(userDao.getAllUsers());
 //
-//        System.out.println(userDao.getAllUsers());
+//        userBean.setAccount("13813400980800");
+//        System.out.println(userDao.updateUserByAccount(userBean));
 
-        userBean.setAccount("13813400980800");
-        System.out.println(userDao.updateUserByAccount(userBean));
+        System.out.println(userDao.getUserByAccount("1"));
     }
 
     @Autowired

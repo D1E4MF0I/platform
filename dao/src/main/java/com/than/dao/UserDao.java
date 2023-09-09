@@ -48,4 +48,13 @@ public interface UserDao {
      */
     @Update("UPDATE `platformDB`.`user_tbl` SET `password` = #{userBean.password}, `name` = #{userBean.name}, `headshot` = #{userBean.headshot}, `background` = #{userBean.background}, `signature` = #{userBean.signature}, `create_time` = #{userBean.create_time} WHERE `account` = #{userBean.account};")
     int updateUserByAccount(@Param("userBean") UserBean userBean);
+
+    /**
+     * 根据 用户账号 查询数据库中是否有此用户
+     * @param account
+     * @return 用户存在 返回true，否则返回false
+     */
+    @Select("SELECT COUNT(*) > 0 FROM `platformDB`.`user_tbl` WHERE account = #{account}")
+    @ResultType(Boolean.class)
+    boolean getUserByAccount(String account);
 }
