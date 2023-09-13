@@ -125,6 +125,7 @@ public class UserBean {
     public UserBean() {
         account = String.valueOf(System.nanoTime());
         create_time = new Timestamp(System.currentTimeMillis());
+        this.type = UserType.ORDINARY.value;
     }
 
     public UserBean(String name, String password) {
