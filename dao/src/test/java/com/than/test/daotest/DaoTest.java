@@ -57,9 +57,15 @@ public class DaoTest {
 //        groupDao.insertUser(groupBean);
 //
 //        System.out.println(groupDao.getAllGroups());
-        groupBean.setGroup_account("13731286298500");
-        groupBean.setGroup_creator_account("111");
+//        groupBean.setGroup_account("11111111111");
+//        groupBean.setGroup_creator_account("12311");
 
+//        System.out.println(groupDao.insertGroup(groupBean));
+//        System.out.println(groupDao.updateByGroupAccount(groupBean));
+        groupDao.insertGroup(groupBean);
+        groupBean.setGroup_owner_account("111222333");
         System.out.println(groupDao.updateByGroupAccount(groupBean));
+
+        groupDao.updateGroupCreatorAccount("332211", groupBean.getGroup_account());
     }
 }
