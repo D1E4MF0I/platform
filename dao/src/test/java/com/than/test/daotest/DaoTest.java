@@ -3,8 +3,6 @@ package com.than.test.daotest;
 
 import com.than.dao.GroupDao;
 import com.than.dao.UserDao;
-import com.than.dao.bean.GroupBean;
-import com.than.dao.bean.UserBean;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
