@@ -1,5 +1,6 @@
 package com.than.test.daotest.bean;
 
+import com.than.dao.UserDao;
 import com.than.dao.bean.GroupBean;
 import com.than.dao.bean.UserBean;
 import org.junit.jupiter.api.Test;
@@ -14,14 +15,16 @@ public class DaoBeanTest {
     @Autowired
     GroupBean groupBean;
 
+    @Autowired
+    UserDao dao;
+
     /*自动装备测试*/
     @Test
     public void testUserBean(){
-        System.out.println(userBean);
     }
 
     @Test
     public void testGroupBean(){
-        System.out.println(groupBean);
+        System.out.println(dao);
     }
 }

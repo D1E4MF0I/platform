@@ -9,6 +9,7 @@ import java.util.List;
 public interface UserDao {
     /**
      * 查询 根据账户号查询具体账户
+     *
      * @param account 账户号
      * @return UserBean 账户
      */
@@ -18,6 +19,7 @@ public interface UserDao {
 
     /**
      * 查询 查询所有账户
+     *
      * @return 所有账户的列表
      */
     @Select("select * from user_tbl")
@@ -26,6 +28,7 @@ public interface UserDao {
 
     /**
      * 添加新账户
+     *
      * @param userBean 用户信息
      * @return 操作数量，用于判断操作结果
      */
@@ -33,9 +36,9 @@ public interface UserDao {
     int insertUser(@Param("userBean") UserBean userBean);
 
 
-
     /**
      * 删除 根据账户号指定删除账户
+     *
      * @param account
      * @return 操作数量，用于判断结果
      */
@@ -53,6 +56,7 @@ public interface UserDao {
 
     /**
      * 根据 用户账号 查询数据库中是否有此用户
+     *
      * @param account
      * @return 用户存在 返回true，否则返回false
      */

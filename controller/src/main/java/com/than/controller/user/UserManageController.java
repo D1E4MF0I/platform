@@ -27,6 +27,8 @@ public class UserManageController {
     @PostMapping("/change_username")
     public Result changeUsername(@RequestParam("new_name") String name) {
 
+        userManageService.changeUsername(name);
+
         return new Result();
     }
 
@@ -42,6 +44,8 @@ public class UserManageController {
     @PostMapping("/change_picture")
     public Result changeAccountPicture(@RequestParam("picture_url") String url) {
 
+        userManageService.changeAccountPicture(url);
+
         return new Result();
     }
 
@@ -53,6 +57,8 @@ public class UserManageController {
      */
     @PostMapping("/change_background")
     public Result changeAccountBackground(@RequestParam("picture_url") String url) {
+
+        userManageService.changeAccountBackground(url);
 
         return new Result();
     }
@@ -66,6 +72,8 @@ public class UserManageController {
     @PostMapping("/change_signature")
     public Result changeUserSignature(@RequestParam("signature") String signature) {
 
+        userManageService.changeUserSignature(signature);
+
         return new Result();
     }
 
@@ -77,6 +85,8 @@ public class UserManageController {
      */
     @PostMapping("/change_region")
     public Result changeUserRegion(@RequestParam("region") String region) {
+
+        userManageService.changeUserRegion(region);
 
         return new Result();
     }
@@ -90,6 +100,8 @@ public class UserManageController {
     @PostMapping("/change_user_msg")
     public Result changeUserMsgByJson(@RequestBody UserPersonalMsgBean bean) {
 
+        userManageService.changeUserMsgByJson(bean);
+
         return new Result();
     }
 
@@ -102,6 +114,8 @@ public class UserManageController {
      */
     @PostMapping("/change_type")
     public Result changeUserType(@RequestParam("type") String type) {
+
+        userManageService.changeUserType(type);
 
         return new Result();
     }

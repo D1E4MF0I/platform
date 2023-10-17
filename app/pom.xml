@@ -22,12 +22,6 @@
             <version>0.0.1</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.than</groupId>
-            <artifactId>util</artifactId>
-            <version>0.0.1</version>
-        </dependency>
-
     </dependencies>
 
 
@@ -46,7 +40,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <classifier>exec</classifier>
-                    <mainClass>com.than.test.App</mainClass>
+                    <mainClass>com.than.App</mainClass>
                     <layout>ZIP</layout>
 
                     <jvmArguments>-Dfile.encoding=UTF-8</jvmArguments>
@@ -62,9 +56,5 @@
             </plugin>
         </plugins>
     </build>
-
-
-
-
 
 </project>

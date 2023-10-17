@@ -25,6 +25,7 @@ public class ParentsAndKidsAxis {
      */
     @GetMapping("/family_axis")
     public Result getAxis(){
+        parentsAndKidsAxisService.getAxis();
         return new Result();
     }
 
@@ -36,6 +37,7 @@ public class ParentsAndKidsAxis {
      */
     @PostMapping("/add_msg")
     public Result addAxisMsg(@RequestBody AxisMsgBean bean){
+        parentsAndKidsAxisService.addAxisMsg(bean);
         return new Result();
     }
 

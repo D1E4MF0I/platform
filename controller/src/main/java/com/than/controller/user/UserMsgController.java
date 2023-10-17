@@ -2,6 +2,7 @@ package com.than.controller.user;
 
 
 import com.than.base.Result;
+import com.than.service.user.UserMsgService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserMsgController {
 
     @Autowired
-    private UserMsgController userMsgController;
+    private UserMsgService userMsgService;
 
     /**
      * <p>获取个人信息,无参数,但是需要在请求头中附带cookie</p>
@@ -24,6 +25,8 @@ public class UserMsgController {
      */
     @GetMapping("/personal")
     public Result getPersonalMsg() {
+
+        userMsgService.getPersonalMsg();
 
         return new Result();
     }
@@ -37,6 +40,7 @@ public class UserMsgController {
     @PostMapping("/others_msg_by_username")
     public Result getOthersMsgByName(@RequestParam("username") String username) {
 
+        userMsgService.getOthersMsgByName(username);
 
         return new Result();
     }
@@ -50,6 +54,7 @@ public class UserMsgController {
     @PostMapping("/others_msg_by_id")
     public Result getOthersMsgById(@RequestParam("user_id") String id) {
 
+        userMsgService.getOthersMsgById(id);
 
         return new Result();
     }

@@ -26,6 +26,7 @@ public class CommentController {
      */
     @GetMapping("/get_all_comments_by_post_id")
     public Result getCommentsByPostId(@RequestParam("post_id")String id){
+        commentService.getCommentsByPostId(id);
         return new Result();
     }
 
@@ -36,6 +37,7 @@ public class CommentController {
      */
     @GetMapping("/get_all_comments_by_user_id")
     public Result getCommentsByUserId(@RequestParam("user_id")String id){
+        commentService.getCommentsByUserId(id);
         return new Result();
     }
 

@@ -3,8 +3,10 @@ package com.than.service.user;
 import com.than.base.Code;
 import com.than.base.Result;
 import com.than.controller.bean.UserPersonalMsgBean;
+import com.than.dao.UserDao;
 import com.than.jwt.JWTUtil;
 import com.than.time.TimeUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -19,9 +21,19 @@ import java.util.Map;
 @Service
 public class UserService {
 
+    @Autowired
+    private UserDao userDao;
+
     public Result signUpUser(String user, String pwd) {
+
+        // TODO: 2023/9/5 判断用户名是否存在, 返回bool
+
+        boolean temp;
+
         // TODO: 2023/8/25 将数据存入数据库,并获取id, 判断账号名是否符合规范(长度小于50)
         int id = 1;
+
+        userDao.getByAccount(user);
 
         String token = JWTUtil.getToken(Map.of(String.valueOf(id), user, "creat-time", String.valueOf(TimeUtil.getTime())));
 
@@ -71,6 +83,7 @@ public class UserService {
 
     private boolean verifyPwd(String user, String pwd) {
         // TODO: 2023/8/26 从数据库验证用户账号和密码，返回布尔值
+
         return false;
     }
 

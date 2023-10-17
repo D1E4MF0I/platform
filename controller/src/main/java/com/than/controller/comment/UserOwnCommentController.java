@@ -28,6 +28,7 @@ public class UserOwnCommentController {
      */
     @PostMapping("/send_comment")
     public Result addComment(@RequestBody CommentBean bean) {
+        userOwnCommentService.addComment(bean);
         return new Result();
     }
 
@@ -38,6 +39,7 @@ public class UserOwnCommentController {
      */
     @PostMapping("/delete_comment")
     public Result deleteComment(@RequestBody CommentBean bean) {
+        userOwnCommentService.deleteComment(bean);
         return new Result();
     }
 

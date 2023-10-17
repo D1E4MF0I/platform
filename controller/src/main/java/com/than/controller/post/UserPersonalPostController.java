@@ -26,6 +26,7 @@ public class UserPersonalPostController {
      */
     @PostMapping("/send")
     public Result addPost(@RequestBody PersonalPostBean bean) {
+        userPersonalPostService.addPost(bean);
 
         return new Result();
     }
@@ -40,6 +41,7 @@ public class UserPersonalPostController {
      */
     @PostMapping("/remove")
     public Result deletePost(@RequestParam("post_id") String id) {
+        userPersonalPostService.deletePost(id);
 
         return new Result();
     }
@@ -52,6 +54,7 @@ public class UserPersonalPostController {
      */
     @GetMapping("/get_all")
     public Result getAllOwnPost() {
+        userPersonalPostService.getAllOwnPost();
 
         return new Result();
     }
@@ -66,6 +69,8 @@ public class UserPersonalPostController {
      */
     @PostMapping("/update")
     public Result updatePost(@RequestBody PersonalPostBean bean) {
+        userPersonalPostService.updatePost(bean);
+
         return new Result();
     }
 

@@ -7,6 +7,7 @@ import com.than.file.FileManage;
 import com.than.file.exception.FolderCreationFailedException;
 import com.than.service.file.FileAcceptService;
 import com.than.time.TimeUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +26,7 @@ import java.util.UUID;
  */
 @RestController
 @RequestMapping("/file")
+@Slf4j
 public class FileAcceptController {
 
     @Autowired
@@ -56,7 +58,7 @@ public class FileAcceptController {
             try {
                 FileManage.mkdir(temp);
             }catch (FolderCreationFailedException e){
-                System.out.printf("\n\u001B[%dm%s\u001B[0m%n \n", 31, e.getMessage());
+                log.error(e.getMessage());
             }
         }
 

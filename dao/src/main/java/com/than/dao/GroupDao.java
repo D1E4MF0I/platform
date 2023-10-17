@@ -39,7 +39,6 @@ public interface GroupDao {
     int insertGroup(@Param("groupBean") GroupBean groupBean);
 
 
-
     /**
      * 删除 根据群聊号删除指定群聊
      *
@@ -51,6 +50,7 @@ public interface GroupDao {
 
     /**
      * 更新 根据 群聊号 创建群聊账户号 更改群聊其他数据（不包括创始人
+     *
      * @param groupBean 更新后的群聊
      * @return 操作数量，用于判断结果
      */
@@ -60,6 +60,7 @@ public interface GroupDao {
 
     /**
      * 更新 根据group_account更改group_creator_account
+     *
      * @param newCreatorAccount
      * @param groupAccount
      * @return 操作数量，用于判断结果

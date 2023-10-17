@@ -31,12 +31,6 @@ public class TimeUtil {
         return System.currentTimeMillis();
     }
 
-    public static long getOffsetTime(int day){
-        Calendar instance = Calendar.getInstance();
-        instance.add(Calendar.DAY_OF_MONTH, day);
-        return instance.getTimeInMillis();
-    }
-
     public static Date getOffsetData(int day){
         Calendar instance = Calendar.getInstance();
         instance.add(Calendar.DAY_OF_MONTH, day);

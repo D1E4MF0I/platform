@@ -23,6 +23,9 @@ public class UserPostController {
      */
     @GetMapping("/all_posts")
     public Result getAllPost() {
+
+        userPostService.getAllPost();
+
         return new Result();
     }
 
@@ -32,7 +35,9 @@ public class UserPostController {
      * @return 若用户未公开帖子, 返回空, 否则返回所有帖子
      */
     @GetMapping("/others_posts")
-    public Result getOthersPosts() {
+    public Result getOtherPosts(@RequestParam("username") String userName) {
+
+        userPostService.getOthersPosts(userName);
         return new Result();
     }
 
@@ -44,6 +49,8 @@ public class UserPostController {
      */
     @PostMapping("/post_detail_msg")
     public Result getPostDetailedMsgById(@RequestParam("post_id") String id) {
+
+        userPostService.getPostDetailedMsgById(id);
         return new Result();
     }
 

@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+/app/tls/ca.pem
+/app/tls/cert.pem
+/app/tls/key.pem

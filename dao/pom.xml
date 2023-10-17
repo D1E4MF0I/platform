@@ -29,8 +29,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.25</version>
-            <scope>runtime</scope>
+            <version>8.0.33</version>
         </dependency>
 
         <dependency>
@@ -47,8 +46,6 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
-
 
 
 </project>

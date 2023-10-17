@@ -16,22 +16,16 @@
     <dependencies>
 
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
+
+
+        <dependency>
             <groupId>com.than</groupId>
             <artifactId>service</artifactId>
             <version>0.0.1</version>
         </dependency>
-        <dependency>
-            <groupId>com.than</groupId>
-            <artifactId>util</artifactId>
-            <version>0.0.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.than</groupId>
-            <artifactId>bean</artifactId>
-            <version>0.0.1</version>
-        </dependency>
-
 
     </dependencies>
 
