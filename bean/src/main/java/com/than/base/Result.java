@@ -30,4 +30,5 @@ public class Result {
         this.msg = msg;
         this.extraInformation = extraInformation;
     }
+
 }

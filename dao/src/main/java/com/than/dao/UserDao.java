@@ -9,12 +9,19 @@ import java.util.List;
 public interface UserDao {
     /**
      * 查询 根据账户号查询具体账户
-     *
-     * @param account 账户号
      * @return UserBean 账户
      */
-    @Select("select * from user_tbl where account = #{account}")
-    UserBean getByAccount(String account);
+    @Select("select * from user_tbl where name = #{name}")
+    UserBean getByUsername(String name);
+
+
+    /**
+     * 根据token查询用户
+     * @param token 用户token
+     * @return 用户bean
+     */
+    @Select("select * from user_tbl where token = #{token}")
+    UserBean getByUserToken(String token);
 
 
     /**
@@ -32,7 +39,7 @@ public interface UserDao {
      * @param userBean 用户信息
      * @return 操作数量，用于判断操作结果
      */
-    @Insert("INSERT INTO `platformDB`.`user_tbl` (`account`, `password`, `name`, `headshot`, `background`, `signature`, `create_time`, `type`, `region`) VALUES (#{userBean.account}, #{userBean.password}, #{userBean.name}, #{userBean.headshot}, #{userBean.background}, #{userBean.signature}, #{userBean.create_time}, #{userBean.type}, #{userBean.region})")
+    @Insert("INSERT INTO `platformDB`.`user_tbl` (`account`, `password`, `name`, `headshot`, `background`, `signature`, `create_time`, `type`, `region`,`token`) VALUES (#{userBean.account}, #{userBean.password}, #{userBean.name}, #{userBean.headshot}, #{userBean.background}, #{userBean.signature}, #{userBean.create_time}, #{userBean.type}, #{userBean.region}, #{userBean.token})")
     int insertUser(@Param("userBean") UserBean userBean);
 
 
@@ -56,11 +63,22 @@ public interface UserDao {
 
     /**
      * 根据 用户账号 查询数据库中是否有此用户
-     *
-     * @param account
      * @return 用户存在 返回true，否则返回false
      */
-    @Select("SELECT COUNT(*) > 0 FROM `platformDB`.`user_tbl` WHERE account = #{account}")
-    @ResultType(Boolean.class)
-    boolean getUserByAccount(String account);
+    @Select("SELECT EXISTS(SELECT 1 FROM `user_tbl` WHERE name = #{username})")
+    boolean isUserNameExist(String username);
+
+    /**
+     * 验证密码是否正确
+     * @param username 用户名
+     * @param pwd 密码
+     * @return 是否正确
+     */
+    @Select("SELECT EXISTS(SELECT 1 FROM `user_tbl` WHERE name = #{username} AND `password`= #{pwd})")
+    boolean isUserPasswordRight(String username,String pwd);
+
+    @Update("UPDATE `user_tbl` SET `token` = #{token} WHERE `name` = #{username}")
+    int updateToken(String username,String token);
+
+
 }

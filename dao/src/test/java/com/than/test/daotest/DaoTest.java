@@ -13,6 +13,13 @@ public class DaoTest {
     UserDao userDao;
 
     @Test
+    void testBool(){
+
+        System.out.println(userDao.isUserNameExist("2345"));
+
+    }
+
+    @Test
     void testUserDao(){
 //        UserBean userBean1 = new UserBean();
 //        userBean1.setAccount("1234");

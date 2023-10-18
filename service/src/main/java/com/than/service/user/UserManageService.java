@@ -1,7 +1,7 @@
 package com.than.service.user;
 
 import com.than.base.Result;
-import com.than.controller.bean.UserPersonalMsgBean;
+import com.than.dao.bean.UserBean;
 import org.springframework.stereotype.Service;
 
 /**
@@ -54,7 +54,7 @@ public class UserManageService {
         return new Result();
     }
 
-    public Result changeUserMsgByJson(UserPersonalMsgBean bean) {
+    public Result changeUserMsgByJson(UserBean bean) {
         // TODO: 2023/8/30 根据token从数据修改用户信息
 
 

@@ -29,7 +29,8 @@ public class UserController {
     @PostMapping("/sign_up")
     public Result signUpUser(@RequestParam("user") String user, @RequestParam("pwd") String pwd, HttpServletResponse response) {
         Result result = service.signUpUser(user, pwd);
-        response.addHeader("token", result.getExtraInformation().toString());
+        if(result.getExtraInformation()!=null)
+            response.addHeader("token", result.getExtraInformation().toString());
         return result;
     }
 
@@ -44,8 +45,8 @@ public class UserController {
     public Result logInByPwd(@RequestParam("user") String user, @RequestParam("pwd") String pwd,HttpServletResponse response) {
 
         Result result = service.logInByPwd(user, pwd);
-        response.addHeader("token", result.getExtraInformation().toString());
-
+        if(result.getExtraInformation()!=null)
+            response.addHeader("token", result.getExtraInformation().toString());
         return result;
     }
 
@@ -59,9 +60,9 @@ public class UserController {
     public Result logInByCookie(HttpServletResponse response, HttpServletRequest request) {
         String token = request.getHeader("token");
         Result result = service.logInByCookie(token);
-        response.addHeader("token", result.getExtraInformation().toString());
-
-        return new Result();
+        if(result.getExtraInformation()!=null)
+            response.addHeader("token", result.getExtraInformation().toString());
+        return result;
     }
 
 

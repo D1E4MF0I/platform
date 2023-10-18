@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
  * @description: 全局异常捕获, 统一处理
  * @date: 2023/8/25 20:56
  */
-@RestControllerAdvice
+//@RestControllerAdvice
 @Slf4j
 public class GlobalException {
 

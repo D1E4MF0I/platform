@@ -6,11 +6,13 @@ import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.than.base.Code;
 import com.than.base.Result;
+import com.than.dao.UserDao;
 import com.than.jwt.JWTUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -29,6 +31,9 @@ import java.util.Map;
 @Slf4j
 public class JWTInterceptor implements HandlerInterceptor {
 
+    @Autowired
+    private UserDao userDao;
+
     @Override
     public boolean preHandle(HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull Object handler) throws Exception {
         Map<String, Object> map = new HashMap<>();
@@ -36,6 +41,9 @@ public class JWTInterceptor implements HandlerInterceptor {
         String token = request.getHeader("token");
         try {
             JWTUtil.verify(token);//验证令牌
+            if(userDao.getByUserToken(token)==null){
+                throw new RuntimeException();
+            }
             return true;//放行请求
         } catch (SignatureVerificationException e) {
             log.error(e.getMessage());
@@ -46,7 +54,7 @@ public class JWTInterceptor implements HandlerInterceptor {
         } catch (AlgorithmMismatchException e) {
             log.error(e.getMessage());
             map.put("msg", "token算法不一致");
-        } catch (Exception e) {
+        } catch (RuntimeException e) {
             log.error(e.getMessage());
             map.put("msg", "token失效");
         }

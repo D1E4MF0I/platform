@@ -2,8 +2,8 @@ package com.than.service.user;
 
 import com.than.base.Code;
 import com.than.base.Result;
-import com.than.controller.bean.UserPersonalMsgBean;
 import com.than.dao.UserDao;
+import com.than.dao.bean.UserBean;
 import com.than.jwt.JWTUtil;
 import com.than.time.TimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,18 +26,14 @@ public class UserService {
 
     public Result signUpUser(String user, String pwd) {
 
-        // TODO: 2023/9/5 判断用户名是否存在, 返回bool
-
-        boolean temp;
-
-        // TODO: 2023/8/25 将数据存入数据库,并获取id, 判断账号名是否符合规范(长度小于50)
-        int id = 1;
-
-        userDao.getByAccount(user);
-
-        String token = JWTUtil.getToken(Map.of(String.valueOf(id), user, "creat-time", String.valueOf(TimeUtil.getTime())));
-
-        return new Result(Code.OK, initUser(), token);
+        if (userDao.isUserNameExist(user)) {
+            return new Result(Code.FAIL, "用户已经存在！");
+        } else if (user.length() > 50) {
+            return new Result(Code.FAIL, "用户名过长！");
+        }
+        UserBean bean = initUser(user, pwd);
+        userDao.insertUser(bean);
+        return new Result(Code.OK, bean, bean.getToken());
     }
 
     public Result logInByPwd(String user, String pwd) {
@@ -45,8 +41,8 @@ public class UserService {
         Result result;
 
         if (isRight) {
-            UserPersonalMsgBean userMsg = getUserMsg(user);
-            result = new Result(Code.OK, getUserMsg(user), userMsg.getToken());
+            UserBean userMsg = getUserMsg(user);
+            result = new Result(Code.OK, userMsg, userMsg.getToken());
         } else {
             result = new Result(Code.FAIL, "密码错误", null);
         }
@@ -55,37 +51,44 @@ public class UserService {
     }
 
     public Result logInByCookie(String token) {
-
-        UserPersonalMsgBean userMsg = getUserMsg(token);
-
-
+        UserBean userMsg = getUserMsg(token);
         return new Result(Code.OK, userMsg, userMsg.getToken());
     }
 
-    private UserPersonalMsgBean initUser() {
-        return null;
+
+    private String getToken(String account, String user) {
+        return JWTUtil.getToken(Map.of(account, user, "creat-time", String.valueOf(TimeUtil.getTime())));
     }
 
-    private UserPersonalMsgBean getUserMsg(String userVerifyCode) {
+
+    private UserBean initUser(String user, String pwd) {
+        UserBean bean = new UserBean(user, pwd);
+        String account = bean.getAccount();
+        String token = getToken(account, user);
+        bean.setToken(token);
+        bean.setSignature("懒未设");
+        // TODO: 2023/10/18 完善默认头像等信息
+        return bean;
+    }
+
+    private UserBean getUserMsg(String userVerifyCode) {
         if (userVerifyCode.length() > 50) {
-            return getUserMsgByToken();
+            System.out.println(userVerifyCode);
+            return userDao.getByUserToken(userVerifyCode);
         }
-        return getUserMsgByUser();
-    }
-
-    private UserPersonalMsgBean getUserMsgByUser() {
-        return null;
-    }
-
-    private UserPersonalMsgBean getUserMsgByToken() {
-        return null;
+        return userDao.getByUsername(userVerifyCode);
     }
 
     private boolean verifyPwd(String user, String pwd) {
-        // TODO: 2023/8/26 从数据库验证用户账号和密码，返回布尔值
+        UserBean userBean = getUserMsg(user);
 
+        if (userBean != null) {
+            //副作用，更新token
+            String token = getToken(userBean.getAccount(), userBean.getName());
+            userDao.updateToken(userBean.getName(), token);
+            return pwd.equals(userBean.getPassword());
+        }
         return false;
     }
-
 
 }

@@ -1,7 +1,7 @@
 package com.than.controller.user;
 
 import com.than.base.Result;
-import com.than.controller.bean.UserPersonalMsgBean;
+import com.than.dao.bean.UserBean;
 import com.than.service.user.UserManageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -98,7 +98,7 @@ public class UserManageController {
      * @return 是否修改成功, 附带总体信息
      */
     @PostMapping("/change_user_msg")
-    public Result changeUserMsgByJson(@RequestBody UserPersonalMsgBean bean) {
+    public Result changeUserMsgByJson(@RequestBody UserBean bean) {
 
         userManageService.changeUserMsgByJson(bean);
 
