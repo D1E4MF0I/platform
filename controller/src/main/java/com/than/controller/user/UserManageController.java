@@ -1,5 +1,6 @@
 package com.than.controller.user;
 
+import com.than.aspect.Argument;
 import com.than.base.Result;
 import com.than.dao.bean.UserBean;
 import com.than.service.user.UserManageService;
@@ -26,8 +27,9 @@ public class UserManageController {
      */
     @PostMapping("/change_username")
     public Result changeUsername(@RequestParam("new_name") String name) {
+        Argument argument=new Argument(name,"name");
 
-        userManageService.changeUsername(name);
+        userManageService.changeUsername(argument);
 
         return new Result();
     }
@@ -44,7 +46,9 @@ public class UserManageController {
     @PostMapping("/change_picture")
     public Result changeAccountPicture(@RequestParam("picture_url") String url) {
 
-        userManageService.changeAccountPicture(url);
+        Argument argument=new Argument(url,"headshot");
+
+        userManageService.changeAccountPicture(argument);
 
         return new Result();
     }
@@ -58,7 +62,9 @@ public class UserManageController {
     @PostMapping("/change_background")
     public Result changeAccountBackground(@RequestParam("picture_url") String url) {
 
-        userManageService.changeAccountBackground(url);
+        Argument argument=new Argument(url,"background");
+
+        userManageService.changeAccountBackground(argument);
 
         return new Result();
     }
@@ -72,7 +78,9 @@ public class UserManageController {
     @PostMapping("/change_signature")
     public Result changeUserSignature(@RequestParam("signature") String signature) {
 
-        userManageService.changeUserSignature(signature);
+        Argument argument=new Argument(signature,"signature");
+
+        userManageService.changeUserSignature(argument);
 
         return new Result();
     }
@@ -86,7 +94,9 @@ public class UserManageController {
     @PostMapping("/change_region")
     public Result changeUserRegion(@RequestParam("region") String region) {
 
-        userManageService.changeUserRegion(region);
+        Argument argument=new Argument(region,"region");
+
+        userManageService.changeUserRegion(argument);
 
         return new Result();
     }
@@ -115,7 +125,9 @@ public class UserManageController {
     @PostMapping("/change_type")
     public Result changeUserType(@RequestParam("type") String type) {
 
-        userManageService.changeUserType(type);
+        Argument argument=new Argument(type,"type");
+
+        userManageService.changeUserType(argument);
 
         return new Result();
     }

@@ -1,5 +1,6 @@
 package com.than.service.user;
 
+import com.than.aspect.Argument;
 import com.than.base.Result;
 import com.than.dao.bean.UserBean;
 import org.springframework.stereotype.Service;
@@ -15,21 +16,22 @@ import org.springframework.stereotype.Service;
 public class UserManageService {
 
 
-    public Result changeUsername(String name){
+    public Result changeUsername(Argument name){
         // TODO: 2023/8/30 根据token从数据库, 修改用户名
+
 
 
         return null;
     }
 
-    public Result changeAccountPicture(String url){
+    public Result changeAccountPicture(Argument url){
         // TODO: 2023/8/30 根据token从数据库修改用户头像
 
 
         return null;
     }
 
-    public Result changeAccountBackground(String url){
+    public Result changeAccountBackground(Argument url){
         // TODO: 2023/8/30 根据token从数据库修改背景图片
 
 
@@ -38,7 +40,7 @@ public class UserManageService {
     }
 
 
-    public Result changeUserSignature(String signature){
+    public Result changeUserSignature(Argument signature){
         // TODO: 2023/8/30 根据用户token从数据库修改用户签名
 
 
@@ -46,7 +48,7 @@ public class UserManageService {
         return null;
     }
 
-    public Result changeUserRegion(String region) {
+    public Result changeUserRegion(Argument region) {
         // TODO: 2023/8/30 根据token从数据库修改用户地区
 
 
@@ -62,7 +64,7 @@ public class UserManageService {
         return new Result();
     }
 
-    public Result changeUserType(String type) {
+    public Result changeUserType(Argument type) {
         // TODO: 2023/8/30 从token从数据库修改用户类型
 
 

@@ -21,8 +21,6 @@ import java.util.concurrent.ConcurrentHashMap;
 @Component
 public class ChatHandler {
 
-
-
     public static final Map<String, Session> sessionMap = new ConcurrentHashMap<>();
     private final ObjectMapper mapper=new ObjectMapper();
 

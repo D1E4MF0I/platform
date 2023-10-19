@@ -1,6 +1,5 @@
 package com.than;
 
-import lombok.Data;
 import lombok.Getter;
 
 import java.util.EnumSet;
