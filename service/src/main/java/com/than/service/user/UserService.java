@@ -2,7 +2,7 @@ package com.than.service.user;
 
 import com.than.base.Code;
 import com.than.base.Result;
-import com.than.dao.UserDao;
+import com.than.dao.user.UserDao;
 import com.than.dao.bean.UserBean;
 import com.than.jwt.JWTUtil;
 import com.than.time.TimeUtil;
@@ -52,7 +52,9 @@ public class UserService {
 
     public Result logInByCookie(String token) {
         UserBean userMsg = getUserMsg(token);
-        return new Result(Code.OK, userMsg, userMsg.getToken());
+        String newToken = JWTUtil.refreshTheToken(token);
+        userMsg.setToken(newToken);
+        return new Result(Code.OK, userMsg, newToken);
     }
 
 
@@ -73,7 +75,6 @@ public class UserService {
 
     private UserBean getUserMsg(String userVerifyCode) {
         if (userVerifyCode.length() > 50) {
-            System.out.println(userVerifyCode);
             return userDao.getByUserToken(userVerifyCode);
         }
         return userDao.getByUsername(userVerifyCode);

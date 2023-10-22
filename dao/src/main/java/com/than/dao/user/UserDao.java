@@ -1,4 +1,4 @@
-package com.than.dao;
+package com.than.dao.user;
 
 import com.than.dao.bean.UserBean;
 import org.apache.ibatis.annotations.*;

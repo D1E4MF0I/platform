@@ -1,6 +1,7 @@
 package com.than.controller.user;
 
 
+import com.sun.source.util.Trees;
 import com.than.base.Result;
 import com.than.service.user.UserMsgService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +26,7 @@ public class UserMsgController {
      */
     @GetMapping("/personal")
     public Result getPersonalMsg() {
-
-        userMsgService.getPersonalMsg();
-
-        return new Result();
+        return userMsgService.getPersonalMsg();
     }
 
     /**
@@ -39,10 +37,7 @@ public class UserMsgController {
      */
     @PostMapping("/others_msg_by_username")
     public Result getOthersMsgByName(@RequestParam("username") String username) {
-
-        userMsgService.getOthersMsgByName(username);
-
-        return new Result();
+        return userMsgService.getOthersMsgByName(username);
     }
 
     /**
@@ -54,9 +49,7 @@ public class UserMsgController {
     @PostMapping("/others_msg_by_id")
     public Result getOthersMsgById(@RequestParam("user_id") String id) {
 
-        userMsgService.getOthersMsgById(id);
-
-        return new Result();
+        return userMsgService.getOthersMsgById(id);
     }
 
 

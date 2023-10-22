@@ -22,7 +22,7 @@ public class GlobalException {
      * @return 固定结果, 因为暂时无法处理异常
      */
     @ExceptionHandler(value = {java.lang.Exception.class})
-    public Result handleAllOthersException(Exception e) {
+    public Result handleAllOtherException(Exception e) {
         log.error(e.getMessage());
         return new Result(Code.ERROR, "服务器繁忙!!");
     }

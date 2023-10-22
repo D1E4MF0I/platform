@@ -1,8 +1,15 @@
 package com.than.service.user;
 
-import com.than.aspect.Argument;
+import com.mysql.cj.jdbc.PreparedStatementWrapper;
+import com.than.aspect.AutoToken;
+import com.than.aspect.args.ArgumentWithTow;
+import com.than.aspect.args.AutoTokenArgument;
+import com.than.base.Code;
 import com.than.base.Result;
 import com.than.dao.bean.UserBean;
+import com.than.dao.user.UserManageDao;
+import lombok.NonNull;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,61 +22,57 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserManageService {
 
+    @Autowired
+    private UserManageDao dao;
 
-    public Result changeUsername(Argument name){
-        // TODO: 2023/8/30 根据token从数据库, 修改用户名
-
-
-
-        return null;
+    @AutoToken
+    public Result changeUsername(String name, AutoTokenArgument... token){
+        int num = dao.updateNameByToken(tokenGet(token), name);
+        return universalReturn(num);
     }
 
-    public Result changeAccountPicture(Argument url){
-        // TODO: 2023/8/30 根据token从数据库修改用户头像
-
-
-        return null;
+    @AutoToken
+    public Result changeAccountPicture(String url, AutoTokenArgument... token){
+        int num = dao.updateAccountPictureByToken(tokenGet(token), url);
+        return universalReturn(num);
+    }
+    @AutoToken
+    public Result changeAccountBackground(String url, AutoTokenArgument... token){
+        int num = dao.updateAccountBackgroundByToken(tokenGet(token), url);
+        return universalReturn(num);
     }
 
-    public Result changeAccountBackground(Argument url){
-        // TODO: 2023/8/30 根据token从数据库修改背景图片
+    @AutoToken
+    public Result changeUserSignature(String signature, AutoTokenArgument... token){
+        int num = dao.updateUserSignatureByToken(tokenGet(token), signature);
+        return universalReturn(num);
+    }
+    @AutoToken
+    public Result changeUserRegion(String region, AutoTokenArgument... token) {
+        int num = dao.updateUserRegionByToken(tokenGet(token),region);
+        return universalReturn(num);
+    }
+    @AutoToken
+    public Result changeUserType(String type, AutoTokenArgument... token) {
+        int num = dao.updateUserTypeByToken(tokenGet(token), type);
+        return universalReturn(num);
+    }
 
-
-
-        return null;
+    public Result changeUserMsgByJson(@NonNull UserBean bean) {
+        int num = dao.updateUserMsgByToken(bean);
+        return universalReturn(num);
     }
 
 
-    public Result changeUserSignature(Argument signature){
-        // TODO: 2023/8/30 根据用户token从数据库修改用户签名
-
-
-
-        return null;
+    private Result universalReturn(int num){
+        if(num>0){
+            return new Result(Code.OK, "修改成功");
+        }
+        return new Result(Code.FAIL, "修改失败");
     }
 
-    public Result changeUserRegion(Argument region) {
-        // TODO: 2023/8/30 根据token从数据库修改用户地区
-
-
-
-        return new Result();
-    }
-
-    public Result changeUserMsgByJson(UserBean bean) {
-        // TODO: 2023/8/30 根据token从数据修改用户信息
-
-
-
-        return new Result();
-    }
-
-    public Result changeUserType(Argument type) {
-        // TODO: 2023/8/30 从token从数据库修改用户类型
-
-
-
-        return new Result();
+    private String tokenGet(AutoTokenArgument[] token){
+        return token[0].getArg();
     }
 
 

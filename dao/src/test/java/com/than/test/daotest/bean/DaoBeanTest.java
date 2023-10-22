@@ -1,6 +1,6 @@
 package com.than.test.daotest.bean;
 
-import com.than.dao.UserDao;
+import com.than.dao.user.UserDao;
 import com.than.dao.bean.GroupBean;
 import com.than.dao.bean.UserBean;
 import org.junit.jupiter.api.Test;

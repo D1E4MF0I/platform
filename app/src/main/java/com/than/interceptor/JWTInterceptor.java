@@ -6,7 +6,7 @@ import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.than.base.Code;
 import com.than.base.Result;
-import com.than.dao.UserDao;
+import com.than.dao.user.UserDao;
 import com.than.jwt.JWTUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

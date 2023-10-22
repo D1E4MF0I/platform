@@ -16,7 +16,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.1.2</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
 
     <groupId>com.than</groupId>
@@ -24,14 +24,13 @@
     <version>0.0.1</version>
     <name>summer-platform</name>
     <description>summer-platform</description>
+
     <properties>
         <java.version>17</java.version>
     </properties>
 
 
     <dependencies>
-
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -54,13 +53,10 @@
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
 
-
     </dependencies>
 
 
     <build>
-
-
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -76,7 +72,6 @@
             </plugin>
         </plugins>
     </build>
-
 
 
 </project>

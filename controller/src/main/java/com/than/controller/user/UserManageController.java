@@ -1,6 +1,6 @@
 package com.than.controller.user;
 
-import com.than.aspect.Argument;
+import com.than.aspect.args.ArgumentWithTow;
 import com.than.base.Result;
 import com.than.dao.bean.UserBean;
 import com.than.service.user.UserManageService;
@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>用户管理控制层，修改用户信息等操作在这里完成,只能对用户自身操作,此类所有操作需要在请求头中附带cookie</p>
+ *
  * @author Than
  */
 @RestController
@@ -27,11 +28,7 @@ public class UserManageController {
      */
     @PostMapping("/change_username")
     public Result changeUsername(@RequestParam("new_name") String name) {
-        Argument argument=new Argument(name,"name");
-
-        userManageService.changeUsername(argument);
-
-        return new Result();
+        return userManageService.changeUsername(name);
     }
 
 
@@ -45,12 +42,7 @@ public class UserManageController {
      */
     @PostMapping("/change_picture")
     public Result changeAccountPicture(@RequestParam("picture_url") String url) {
-
-        Argument argument=new Argument(url,"headshot");
-
-        userManageService.changeAccountPicture(argument);
-
-        return new Result();
+        return userManageService.changeAccountPicture(url);
     }
 
     /**
@@ -61,12 +53,7 @@ public class UserManageController {
      */
     @PostMapping("/change_background")
     public Result changeAccountBackground(@RequestParam("picture_url") String url) {
-
-        Argument argument=new Argument(url,"background");
-
-        userManageService.changeAccountBackground(argument);
-
-        return new Result();
+        return userManageService.changeAccountBackground(url);
     }
 
     /**
@@ -77,12 +64,7 @@ public class UserManageController {
      */
     @PostMapping("/change_signature")
     public Result changeUserSignature(@RequestParam("signature") String signature) {
-
-        Argument argument=new Argument(signature,"signature");
-
-        userManageService.changeUserSignature(argument);
-
-        return new Result();
+        return userManageService.changeUserSignature(signature);
     }
 
     /**
@@ -93,12 +75,7 @@ public class UserManageController {
      */
     @PostMapping("/change_region")
     public Result changeUserRegion(@RequestParam("region") String region) {
-
-        Argument argument=new Argument(region,"region");
-
-        userManageService.changeUserRegion(argument);
-
-        return new Result();
+        return userManageService.changeUserRegion(region);
     }
 
     /**
@@ -109,10 +86,7 @@ public class UserManageController {
      */
     @PostMapping("/change_user_msg")
     public Result changeUserMsgByJson(@RequestBody UserBean bean) {
-
-        userManageService.changeUserMsgByJson(bean);
-
-        return new Result();
+        return userManageService.changeUserMsgByJson(bean);
     }
 
     /**
@@ -124,12 +98,7 @@ public class UserManageController {
      */
     @PostMapping("/change_type")
     public Result changeUserType(@RequestParam("type") String type) {
-
-        Argument argument=new Argument(type,"type");
-
-        userManageService.changeUserType(argument);
-
-        return new Result();
+        return userManageService.changeUserType(type);
     }
 
 
