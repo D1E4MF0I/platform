@@ -19,7 +19,7 @@ public interface PostDao {
     @Insert("INSERT INTO posts_tbl (title, content, createTime, updateTime, authorId) " +
             "VALUES (#{title}, #{content}, #{createTime}, #{updateTime}, #{authorId})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
-    void insertPersonalPostBean(PersonalPostBean personalPostBean);
+    boolean insertPersonalPostBean(PersonalPostBean personalPostBean);
 
     // 根据ID查询帖子
     @Select("SELECT * FROM posts_tbl WHERE id = #{id}")
@@ -33,10 +33,10 @@ public interface PostDao {
     @Update("UPDATE posts_tbl SET title = #{title}, content = #{content}, " +
             "createTime = #{createTime}, updateTime = #{updateTime}, authorId = #{authorId} " +
             "WHERE id = #{id}")
-    void updatePersonalPostBean(PersonalPostBean personalPostBean);
+    boolean updatePersonalPostBean(PersonalPostBean personalPostBean);
 
     // 根据ID删除帖子
     @Delete("DELETE FROM posts_tbl WHERE id = #{id}")
-    void deletePersonalPostBeanById(Long id);
+    boolean deletePersonalPostBeanById(Long id);
 }
 
