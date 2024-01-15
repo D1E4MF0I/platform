@@ -1,8 +1,13 @@
 package com.than.service.post;
 
+import com.than.base.Code;
 import com.than.base.Result;
 import com.than.controller.bean.PersonalPostBean;
+import com.than.dao.PostDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author Than
@@ -13,30 +18,85 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserPersonalPostService {
-
+    @Autowired
+    PostDao postDao;
     public Result addPost(PersonalPostBean bean) {
         // TODO: 2023/10/15 将帖子加入数据库
-
-        return new Result();
+        Result result = new Result();
+        try {
+            boolean res = postDao.insertPersonalPostBean(bean);
+            if(res){
+                result.setCode(Code.DATABASE_POST_INSERT_SUCCESS);
+                result.setMsg("添加贴子成功");
+            }else{
+                result.setCode(Code.DATABASE_POST_INSERT_ERROR);
+                result.setMsg("添加帖子失败");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            result.setCode(Code.DATABASE_ERROR);
+            result.setMsg("数据库错误");
+        }
+        return result;
     }
 
     public Result deletePost(String id) {
         // TODO: 2023/10/15  根据id删除post
-
-        return new Result();
+        Result result = new Result();
+        try {
+            boolean res = postDao.deletePersonalPostBeanById(Long.valueOf(id));
+            if(res){
+                result.setCode(Code.DATABASE_POST_DELETE_SUCCESS);
+                result.setMsg("删除贴子成功");
+            }else{
+                result.setCode(Code.DATABASE_POST_DELETE_ERROR);
+                result.setMsg("删除帖子失败");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            result.setCode(Code.DATABASE_ERROR);
+            result.setMsg("数据库错误");
+        }
+        return result;
     }
 
     public Result getAllOwnPost() {
         // TODO: 2023/10/15  获取个人的所有帖子
-
-        return new Result();
+        Result result = new Result();
+        try {
+            List<PersonalPostBean> postBeans = postDao.selectAllPersonalPostBeans();
+            if(postBeans.size() > 0){
+                result.setCode(Code.DATABASE_POST_SELECT_SUCCESS);
+                result.setMsg("获取所有贴子成功");
+            }else{
+                result.setCode(Code.DATABASE_POST_SELECT_ERROR);
+                result.setMsg("获取所有帖子失败");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            result.setCode(Code.DATABASE_ERROR);
+            result.setMsg("数据库错误");
+        }
+        return result;
     }
 
     public Result updatePost(PersonalPostBean bean) {
         // TODO: 2023/10/15  重新编辑post
-
-        return new Result();
+        Result result = new Result();
+        try {
+            boolean res = postDao.updatePersonalPostBean(bean);
+            if(res){
+                result.setCode(Code.DATABASE_POST_UPDATE_SUCCESS);
+                result.setMsg("更新贴子成功");
+            }else{
+                result.setCode(Code.DATABASE_POST_UPDATE_ERROR);
+                result.setMsg("更新帖子失败");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            result.setCode(Code.DATABASE_ERROR);
+            result.setMsg("数据库错误");
+        }
+        return result;
     }
-
-
 }
