@@ -3,6 +3,7 @@ package com.than.controller.post;
 import com.than.base.Result;
 import com.than.controller.bean.PersonalPostBean;
 import com.than.service.post.UserPersonalPostService;
+import com.than.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +17,6 @@ public class UserPersonalPostController {
 
     @Autowired
     private UserPersonalPostService userPersonalPostService;
-
     /**
      * <p>发布一个帖子</p>
      * <p>需要在请求头中附带cookie,将在拦截器中检测,cookie为空时不会进入此方法</p>
@@ -53,8 +53,9 @@ public class UserPersonalPostController {
      * @return 返回所有用户个人的帖子
      */
     @GetMapping("/get_all")
-    public Result getAllOwnPost() {
-        userPersonalPostService.getAllOwnPost();
+    public Result getAllOwnPost(String token) {
+        // TODO: 2024/1/15 添加前端具体Token传入实现
+        userPersonalPostService.getAllOwnPost(token);
 
         return new Result();
     }
