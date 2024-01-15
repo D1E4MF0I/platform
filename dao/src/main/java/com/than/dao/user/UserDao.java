@@ -7,6 +7,9 @@ import java.util.List;
 
 @Mapper
 public interface UserDao {
+    @Select("SELECT * FROM user_tbl where id = #{id}")
+    UserBean getById(Long id);
+
     /**
      * 查询 根据账户号查询具体账户
      * @return UserBean 账户
@@ -46,19 +49,19 @@ public interface UserDao {
     /**
      * 删除 根据账户号指定删除账户
      *
-     * @param account
+     * @param id
      * @return 操作数量，用于判断结果
      */
-    @Delete("delete from user_tbl where account = #{account}")
-    int deleteUserByAccount(String account);
+    @Delete("delete from user_tbl where id = #{id}")
+    int deleteUserById(Long id);
 
     /**
-     * 更新根据账户号更改账户其余信息（账户号无法更改，自动生成且唯一）
+     * 更新根据用户id更改账户其余信息（账户号无法更改，自动生成且唯一）
      *
      * @param userBean 更新后的用户数据
      * @return 操作数量，用于判断结果
      */
-    @Update("UPDATE `platformDB`.`user_tbl` SET `password` = #{userBean.password}, `name` = #{userBean.name}, `headshot` = #{userBean.headshot}, `background` = #{userBean.background}, `signature` = #{userBean.signature}, `create_time` = #{userBean.create_time}, `type` = #{userBean.type}, `region` = #{userBean.region} WHERE `account` = #{userBean.account};")
+    @Update("UPDATE `platformDB`.`user_tbl` SET `password` = #{userBean.password}, `name` = #{userBean.name}, `headshot` = #{userBean.headshot}, `background` = #{userBean.background}, `signature` = #{userBean.signature}, `create_time` = #{userBean.create_time}, `type` = #{userBean.type}, `region` = #{userBean.region} WHERE `id` = #{userBean.id};")
     int updateUserByAccount(@Param("userBean") UserBean userBean);
 
     /**
