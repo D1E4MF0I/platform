@@ -4,6 +4,8 @@ import com.than.base.Code;
 import com.than.base.Result;
 import com.than.controller.bean.PersonalPostBean;
 import com.than.dao.PostDao;
+import com.than.dao.bean.UserBean;
+import com.than.dao.user.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,8 @@ import java.util.List;
 public class UserPersonalPostService {
     @Autowired
     PostDao postDao;
+    @Autowired
+    UserDao userDao;
     public Result addPost(PersonalPostBean bean) {
         // TODO: 2023/10/15 将帖子加入数据库
         Result result = new Result();
@@ -60,17 +64,18 @@ public class UserPersonalPostService {
         return result;
     }
 
-    public Result getAllOwnPost() {
-        // TODO: 2023/10/15  获取个人的所有帖子
+    public Result getAllOwnPost(String token) {
+        // TODO: 2023/10/15  根据用户Token获取个人的所有帖子
         Result result = new Result();
+        UserBean userBean = userDao.getByUserToken(token);
         try {
-            List<PersonalPostBean> postBeans = postDao.selectAllPersonalPostBeans();
+            List<PersonalPostBean> postBeans = postDao.selectAllPersonalPostBeansByAuthorId(userBean.getId());
             if(postBeans.size() > 0){
                 result.setCode(Code.DATABASE_POST_SELECT_SUCCESS);
-                result.setMsg("获取所有贴子成功");
+                result.setMsg("获取个人所有贴子成功");
             }else{
                 result.setCode(Code.DATABASE_POST_SELECT_ERROR);
-                result.setMsg("获取所有帖子失败");
+                result.setMsg("获取个人所有帖子失败");
             }
         }catch (Exception e){
             e.printStackTrace();
