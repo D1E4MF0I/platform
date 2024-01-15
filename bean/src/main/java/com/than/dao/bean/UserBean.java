@@ -10,6 +10,7 @@ import java.sql.Timestamp;
 @Component
 @Data
 public class UserBean {
+    private Long id;
     // 必须
     private String name;
     @JsonIgnore
