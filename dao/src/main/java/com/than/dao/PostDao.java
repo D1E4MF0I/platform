@@ -16,7 +16,7 @@ import java.util.List;
 @Mapper
 public interface PostDao {
     // 插入帖子
-    @Insert("INSERT INTO posts_tbl (title, content, create_time, update_time, author_id) " +
+    @Insert("INSERT INTO posts_tbl (title, content, createTime, updateTime, authorId) " +
             "VALUES (#{title}, #{content}, #{createTime}, #{updateTime}, #{authorId})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
     void insertPersonalPostBean(PersonalPostBean personalPostBean);
@@ -31,7 +31,7 @@ public interface PostDao {
 
     // 更新帖子
     @Update("UPDATE posts_tbl SET title = #{title}, content = #{content}, " +
-            "create_time = #{createTime}, update_time = #{updateTime}, author_id = #{authorId} " +
+            "createTime = #{createTime}, updateTime = #{updateTime}, authorId = #{authorId} " +
             "WHERE id = #{id}")
     void updatePersonalPostBean(PersonalPostBean personalPostBean);
 
