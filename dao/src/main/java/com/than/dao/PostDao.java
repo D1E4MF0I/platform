@@ -22,12 +22,15 @@ public interface PostDao {
     boolean insertPersonalPostBean(PersonalPostBean personalPostBean);
 
     // 根据ID查询帖子
-    @Select("SELECT * FROM posts_tbl WHERE id = #{id}")
+    @Select("SELECT 1 FROM posts_tbl WHERE id = #{id}")
     PersonalPostBean selectPersonalPostBeanById(Long id);
 
     // 查询所有帖子
     @Select("SELECT * FROM posts_tbl")
-    List<PersonalPostBean> selectAllPersonalPostBeans();
+    List<PersonalPostBean> selectAllPostBeans();
+    // 查询个人用户所有帖子
+    @Select("SELECT * FROM posts_tbl where authorId = #{authorId}")
+    List<PersonalPostBean> selectAllPersonalPostBeansByAuthorId(Long authorId);
 
     // 更新帖子
     @Update("UPDATE posts_tbl SET title = #{title}, content = #{content}, " +
