@@ -39,7 +39,7 @@ public class UserPersonalPostService {
         }catch (Exception e){
             e.printStackTrace();
             result.setCode(Code.DATABASE_ERROR);
-            result.setMsg("数据库错误");
+            result.setMsg("数据库错误" + e.getStackTrace());
         }
         return result;
     }
@@ -59,7 +59,7 @@ public class UserPersonalPostService {
         }catch (Exception e){
             e.printStackTrace();
             result.setCode(Code.DATABASE_ERROR);
-            result.setMsg("数据库错误");
+            result.setMsg("数据库错误" + e.getStackTrace());
         }
         return result;
     }
@@ -80,7 +80,7 @@ public class UserPersonalPostService {
         }catch (Exception e){
             e.printStackTrace();
             result.setCode(Code.DATABASE_ERROR);
-            result.setMsg("数据库错误");
+            result.setMsg("数据库错误" + e.getStackTrace());
         }
         return result;
     }
@@ -100,7 +100,7 @@ public class UserPersonalPostService {
         }catch (Exception e){
             e.printStackTrace();
             result.setCode(Code.DATABASE_ERROR);
-            result.setMsg("数据库错误");
+            result.setMsg("数据库错误" + e.getStackTrace());
         }
         return result;
     }
