@@ -48,4 +48,13 @@ public class Code {
     public static final int DATABASE_POST_DELETE_SUCCESS = 50008;
     public static final int DATABASE_POST_DELETE_ERROR = 50009;
 
+    /*数据库用户处理相关*/
+    public static final int DATABASE_USER_INSERT_SUCCESS = 50010;
+    public static final int DATABASE_USER_INSERT_ERROR = 50011;
+    public static final int DATABASE_USER_UPDATE_SUCCESS = 50012;
+    public static final int DATABASE_USER_UPDATE_ERROR = 50013;
+    public static final int DATABASE_USER_SELECT_SUCCESS = 50014;
+    public static final int DATABASE_USER_SELECT_ERROR = 50015;
+    public static final int DATABASE_USER_DELETE_SUCCESS = 50016;
+    public static final int DATABASE_USER_DELETE_ERROR = 50017;
 }
