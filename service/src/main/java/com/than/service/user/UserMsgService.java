@@ -22,11 +22,23 @@ public class UserMsgService {
     @Autowired
     private UserDao userDao;
 
+    private String tokenGet(AutoTokenArgument[] token){
+        return token[0].getArg();
+    }
+
     @AutoToken
     public Result getPersonalMsg(AutoTokenArgument... token) {
-        // TODO: 2023/8/30 从数据库获取用户个人信息
-
-        return new Result();
+        UserBean userBean = userDao.getByUserToken(tokenGet(token));
+        Result res = new Result();
+        if(userBean != null){
+            res.setExtraInformation(userBean);
+            res.setMsg("根据Token获取用户信息成功");
+            res.setCode(Code.DATABASE_USER_SELECT_SUCCESS);
+        }else{
+            res.setCode(Code.DATABASE_USER_SELECT_ERROR);
+            res.setMsg("根据Token获取用户信息失败");
+        }
+        return res;
     }
 
     public Result getOthersMsgByName(String username) {
