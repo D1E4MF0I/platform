@@ -26,7 +26,6 @@ public class UserPostService {
     UserDao userDao;
 
     public Result getAllPost() {
-        // TODO: 2023/10/15 从数据库获取所有帖子
         Result result = new Result();
         try {
             List<PersonalPostBean> postBeans = postDao.selectAllPostBeans();
@@ -46,7 +45,6 @@ public class UserPostService {
     }
 
     public Result getOthersPosts(String userName) {
-        // TODO: 2023/10/15 从数据库获取某人帖子  根据用户名
         Result result = new Result();
         UserBean userBean = userDao.getByUsername(userName);
         try {
@@ -67,7 +65,6 @@ public class UserPostService {
     }
 
     public Result getPostDetailedMsgById(String id) {
-        // TODO: 2023/10/15 从数据库获取某帖子详细信息
         Result result = new Result();
         try {
             PersonalPostBean postBean = postDao.selectPersonalPostBeanById(Long.valueOf(id));

@@ -1,5 +1,7 @@
 package com.than.service.post;
 
+import com.than.aspect.AutoToken;
+import com.than.aspect.args.AutoTokenArgument;
 import com.than.base.Code;
 import com.than.base.Result;
 import com.than.controller.bean.PersonalPostBean;
@@ -25,7 +27,6 @@ public class UserPersonalPostService {
     @Autowired
     UserDao userDao;
     public Result addPost(PersonalPostBean bean) {
-        // TODO: 2023/10/15 将帖子加入数据库
         Result result = new Result();
         try {
             boolean res = postDao.insertPersonalPostBean(bean);
@@ -45,7 +46,6 @@ public class UserPersonalPostService {
     }
 
     public Result deletePost(String id) {
-        // TODO: 2023/10/15  根据id删除post
         Result result = new Result();
         try {
             boolean res = postDao.deletePersonalPostBeanById(Long.valueOf(id));
@@ -65,7 +65,6 @@ public class UserPersonalPostService {
     }
 
     public Result getAllOwnPost(String token) {
-        // TODO: 2023/10/15  根据用户Token获取个人的所有帖子
         Result result = new Result();
         UserBean userBean = userDao.getByUserToken(token);
         try {
@@ -86,7 +85,6 @@ public class UserPersonalPostService {
     }
 
     public Result updatePost(PersonalPostBean bean) {
-        // TODO: 2023/10/15  重新编辑post
         Result result = new Result();
         try {
             boolean res = postDao.updatePersonalPostBean(bean);
