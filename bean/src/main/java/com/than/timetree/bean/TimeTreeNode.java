@@ -3,6 +3,8 @@ package com.than.timetree.bean;
 import com.than.controller.bean.PersonalPostBean;
 
 import java.sql.Timestamp;
+import java.time.Instant;
+import java.time.LocalTime;
 
 public class TimeTreeNode implements Comparable<TimeTreeNode>{
     // TODO:生成专属ID
@@ -10,23 +12,25 @@ public class TimeTreeNode implements Comparable<TimeTreeNode>{
 
     // 指向所对应帖子Id
     private Long postId;
-    // TODO:发文，操作，去过哪里
     // 该时间节点时间
     private Timestamp time;
     // 地点
     private String local;
 
+    // TODO:发文，操作，去过哪里
+
     // 功能：发帖信息
-    public TimeTreeNode(PersonalPostBean ppb) {
+    public TimeTreeNode(PersonalPostBean ppb, String local) {
         this.postId = ppb.getId();
         this.time = Timestamp.from(ppb.getCreateTime().toInstant());
-        // TODO:获取地点信息
+        this.local = local;
     }
 
     // 功能：去过哪里
     public TimeTreeNode(String local){
         this.local = local;
-        // TODO:获取时间信息
+        // 获取时间信息
+        this.time = Timestamp.from(Instant.from(LocalTime.now()));
     }
 
     // TODO:功能：做过什么操作
