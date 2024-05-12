@@ -1,15 +1,16 @@
 package com.than.timetree.bean;
 
 import com.than.controller.bean.PersonalPostBean;
+import lombok.Data;
 
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.LocalTime;
 
+@Data
 public class TimeTreeNode implements Comparable<TimeTreeNode>{
     // TODO:生成专属ID
     private Long id;
-
     // 指向所对应帖子Id
     private Long postId;
     // 该时间节点时间
@@ -39,37 +40,5 @@ public class TimeTreeNode implements Comparable<TimeTreeNode>{
     @Override
     public int compareTo(TimeTreeNode o) {
         return this.time.compareTo(o.time);
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getPostId() {
-        return postId;
-    }
-
-    public void setPostId(Long postId) {
-        this.postId = postId;
-    }
-
-    public Timestamp getTime() {
-        return time;
-    }
-
-    public void setTime(Timestamp time) {
-        this.time = time;
-    }
-
-    public String getLocal() {
-        return local;
-    }
-
-    public void setLocal(String local) {
-        this.local = local;
     }
 }
