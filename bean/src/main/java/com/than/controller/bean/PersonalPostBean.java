@@ -12,5 +12,6 @@ public class PersonalPostBean {
     private Date createTime; // 帖子的创建时间
     private Date updateTime; // 帖子的最后更新时间
     private Long authorId; // 发起人的ID
+    // TODO:图片信息存储
 }
 
