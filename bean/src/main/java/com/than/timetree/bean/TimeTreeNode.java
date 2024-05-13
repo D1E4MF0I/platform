@@ -8,13 +8,17 @@ import java.time.Instant;
 import java.time.LocalTime;
 
 @Data
-public class TimeTreeNode implements Comparable<TimeTreeNode>{
+public abstract class TimeTreeNode implements Comparable<TimeTreeNode>{
     // TODO:生成专属ID
     protected Long id;
 
 
     // 节点创建时间
     protected Timestamp time;
+    // 地点
+    protected String local;
+
+
     // TODO:发文，操作，去过哪里
 
     // 功能：发帖信息
