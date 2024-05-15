@@ -27,6 +27,7 @@ public class PostTimeTreeNode extends TimeTreeNode {
     public PostTimeTreeNode(PersonalPostBean ppb){
         this.postId = ppb.getId();
         this.type = TTN_POST;
+        this.userId = ppb.getAuthorId();
 
         this.time = Timestamp.from(ppb.getCreateTime().toInstant());
         this.content = ppb.getContent();
@@ -36,5 +37,16 @@ public class PostTimeTreeNode extends TimeTreeNode {
     public PostTimeTreeNode(PersonalPostBean ppb, String local){
         this(ppb);
         this.local = local;
+    }
+
+    public PostTimeTreeNode(Long id, Long userId, Timestamp time, String local, String type, Long postId, String content, String title) {
+        this.id = id;
+        this.userId = userId;
+        this.time = time;
+        this.local = local;
+        this.type = type;
+        this.postId = postId;
+        this.content = content;
+        this.title = title;
     }
 }
