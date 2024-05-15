@@ -1,11 +1,8 @@
 package com.than.timetree.bean;
 
-import com.than.controller.bean.PersonalPostBean;
 import lombok.Data;
 
 import java.sql.Timestamp;
-import java.time.Instant;
-import java.time.LocalTime;
 
 @Data
 public abstract class TimeTreeNode implements Comparable<TimeTreeNode>{
@@ -17,6 +14,11 @@ public abstract class TimeTreeNode implements Comparable<TimeTreeNode>{
     protected Timestamp time;
     // 地点
     protected String local;
+    // 类型 Local | Operate | Post
+    protected String type;
+    protected final static String TTN_POST = "TTN_POST";
+    protected final static String TTN_OPERATE = "TTN_OPERATE";
+    protected final static String TTN_LOCAL = "TTN_LOCAL";
 
 
     // TODO:发文，操作，去过哪里
