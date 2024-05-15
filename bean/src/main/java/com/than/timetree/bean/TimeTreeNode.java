@@ -1,5 +1,6 @@
 package com.than.timetree.bean;
 
+import com.than.timetree.bean.timetreenode.PostTimeTreeNode;
 import lombok.Data;
 
 import java.sql.Timestamp;
@@ -9,16 +10,18 @@ public abstract class TimeTreeNode implements Comparable<TimeTreeNode>{
     // TODO:生成专属ID
     protected Long id;
 
+    // 用户ID
+    protected Long userId;
 
     // 节点创建时间
     protected Timestamp time;
-    // 地点
+    // 地点 （不要求必须）
     protected String local;
     // 类型 Local | Operate | Post
-    protected String type;
-    protected final static String TTN_POST = "TTN_POST";
-    protected final static String TTN_OPERATE = "TTN_OPERATE";
-    protected final static String TTN_LOCAL = "TTN_LOCAL";
+    public String type;
+    public final static String TTN_POST = "TTN_POST";
+    public final static String TTN_OPERATE = "TTN_OPERATE";
+    public final static String TTN_LOCAL = "TTN_LOCAL";
 
 
     // TODO:发文，操作，去过哪里
