@@ -26,6 +26,7 @@ public class PostTimeTreeNode extends TimeTreeNode {
 
     public PostTimeTreeNode(PersonalPostBean ppb){
         this.postId = ppb.getId();
+        this.type = TTN_POST;
 
         this.time = Timestamp.from(ppb.getCreateTime().toInstant());
         this.content = ppb.getContent();

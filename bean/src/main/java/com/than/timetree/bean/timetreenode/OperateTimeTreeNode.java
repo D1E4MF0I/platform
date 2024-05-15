@@ -10,6 +10,7 @@ public class OperateTimeTreeNode extends TimeTreeNode {
 
     public OperateTimeTreeNode(String operate) {
         this.operate = operate;
+        this.type = TTN_OPERATE;
 
         this.time = Timestamp.from(Instant.now());
     }

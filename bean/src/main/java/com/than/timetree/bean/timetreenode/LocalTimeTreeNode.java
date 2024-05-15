@@ -10,6 +10,7 @@ import java.time.Instant;
 public class LocalTimeTreeNode extends TimeTreeNode {
     public LocalTimeTreeNode(String local) {
         this.local = local;
+        this.type = TTN_LOCAL;
 
         this.time = Timestamp.from(Instant.now());
     }
