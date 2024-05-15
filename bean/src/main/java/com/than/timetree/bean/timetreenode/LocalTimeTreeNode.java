@@ -8,9 +8,10 @@ import java.time.Instant;
 
 @Data
 public class LocalTimeTreeNode extends TimeTreeNode {
-    public LocalTimeTreeNode(String local) {
+    public LocalTimeTreeNode(String local, Long userId) {
         this.local = local;
         this.type = TTN_LOCAL;
+        this.userId = userId;
 
         this.time = Timestamp.from(Instant.now());
     }
