@@ -6,7 +6,13 @@ import com.than.controller.bean.PersonalPostBean;
 import com.than.dao.FileDao;
 import com.than.dao.GroupDao;
 import com.than.dao.PostDao;
+import com.than.dao.timetreenode.LocalTimeTreeNodeDao;
+import com.than.dao.timetreenode.OperateTimeTreeNodeDao;
+import com.than.dao.timetreenode.PostTimeTreeNodeDao;
 import com.than.dao.user.UserDao;
+import com.than.timetree.bean.timetreenode.LocalTimeTreeNode;
+import com.than.timetree.bean.timetreenode.OperateTimeTreeNode;
+import com.than.timetree.bean.timetreenode.PostTimeTreeNode;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,27 +23,29 @@ import java.time.Instant;
 @SpringBootTest
 public class DaoTest {
     @Autowired
-    UserDao userDao;
-
-    @Test
-    void testBool(){
-
-        System.out.println(userDao.isUserNameExist("2345"));
-
-    }
-
+    LocalTimeTreeNodeDao lttnd;
     @Autowired
-    FileDao fileDao;
+    OperateTimeTreeNodeDao ottnd;
+    @Autowired
+    PostTimeTreeNodeDao pttnd;
+    @Autowired
+    PostDao postDao;
+
     @Test
-    void testFile(){
-        System.out.println(fileDao.selectById(1));
-        FileBean fileBean = new FileBean();
-        fileBean.setPath("1");
-        fileBean.setTime(String.valueOf(Timestamp.from(Instant.now())));
-        fileBean.setUrl("123");
-        fileDao.insert(fileBean);
-        System.out.println(fileDao.selectAll());
-        fileDao.deleteById(1);
-        System.out.println(fileDao.selectAll());
+    public void test01(){
+
+//        LocalTimeTreeNode localTimeTreeNode = lttnd.selectAllLocalTimeTreeNodes(1).get(0);
+//        lttnd.deleteLocalTimeTreeNode(localTimeTreeNode.getId(), localTimeTreeNode.getUserId());
+//        System.out.println(lttnd.selectAllLocalTimeTreeNodes(1).get(0).toString());
+
+
+//        OperateTimeTreeNode operateTimeTreeNode = ottnd.selectAllOperateTimeTreeNodes(1).get(0);
+//        ottnd.deleteOperateTimeTreeNode(operateTimeTreeNode.getId(), operateTimeTreeNode.getUserId());
+//        System.out.println(ottnd.selectAllOperateTimeTreeNodes(1));
+
+//        PostTimeTreeNode postTimeTreeNode = pttnd.selectAllPostTimeTreeNodes(1).get(0);
+//        pttnd.deletePostTimeTreeNode(postTimeTreeNode.getId(), postTimeTreeNode.getUserId());
+//        System.out.println(pttnd.selectAllPostTimeTreeNodes(1));
     }
+
 }
